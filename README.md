@@ -4,7 +4,16 @@ Esse é uma projeto para demonstrar a utilização da integração entre o back 
 
 ## Front
 * Node -> v18.17.1
+* Angular -> v16+
+* Angular Material
+* Typescript
 
+## Back
+* Spring boot (Spring data, Spring security) -> 2.7.15
+* Flyway -> v16+
+* Mysql -> 8
+* Git
+* Maven
 
 
 # Projeto Upload (back-end)
