@@ -1,5 +1,12 @@
 # Projeto Spring boot (Back) + Angular (Front)
 
+Esse é uma projeto para demonstrar a utilização da integração entre o back java com spring boot com o Angular +. Abaixo segue as tecnologias utilizadas:
+
+##Front
+* Node -> v18.17.1
+
+
+
 # Projeto Upload (back-end)
   
   > Crie um novo banco de dados utilizando o Mysql com o nome de `uploadccee`.
