@@ -16,15 +16,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-const materialModules = [
-  MatCardModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatProgressBarModule,
-  MatListModule
-];
 
 @NgModule({
   declarations: [
@@ -37,7 +28,14 @@ const materialModules = [
     BrowserAnimationsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    ...materialModules
+    MatCardModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatProgressBarModule,
+  MatListModule,
+  MatIconModule
     
   ],
   providers: [],

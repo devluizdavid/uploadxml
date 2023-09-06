@@ -23,7 +23,6 @@ public class Geracao {
     @Column
     private BigDecimal valor;
 
-
     @ManyToOne
     private Regiao regiao;
 

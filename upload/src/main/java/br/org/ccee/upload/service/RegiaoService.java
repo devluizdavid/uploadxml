@@ -7,6 +7,8 @@ import br.org.ccee.upload.repository.RegiaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RegiaoService {
 
@@ -35,5 +37,7 @@ public class RegiaoService {
     }
 
 
-
+    public List<Regiao> findBySigla(String sigla) {
+        return regiaoRepository.findBySigla(sigla);
+    }
 }

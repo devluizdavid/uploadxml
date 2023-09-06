@@ -17,10 +17,15 @@ import java.util.List;
 public class Regiao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String sigla;
 
-    @ManyToOne
+    @OneToOne
     private Agente agente;
+
 
 
 }

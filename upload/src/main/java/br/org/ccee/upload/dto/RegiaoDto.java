@@ -1,6 +1,7 @@
 package br.org.ccee.upload.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -23,7 +24,7 @@ public class RegiaoDto {
     private PrecoMedioDto precoMedio;
 
     public RegiaoDto(@JsonProperty("sigla") String sigla,
-                     @JsonProperty("geracao") GeracaoDto  geracaoDto,
+                     @JsonProperty("geracao") GeracaoDto geracaoDto,
                      @JsonProperty("compra") CompraDto compraDto,
                      @JsonProperty("precoMedio") PrecoMedioDto precoMedioDto) {
         this.sigla = sigla;

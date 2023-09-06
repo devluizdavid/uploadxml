@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { UploadService } from 'src/app/services/upload.service';
-import { UploadedFile } from 'src/app/models/UploadedFile'; // Importe o modelo de Pessoa
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { UploadService } from 'src/app/services/upload.service'; 
+import { Upload } from 'src/app/models/Upload';
 
+const LABEL_SELECIONAR_ARQUIVO = "Selecione um arquivo";
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
@@ -11,11 +12,13 @@ import { UploadedFile } from 'src/app/models/UploadedFile'; // Importe o modelo 
 })
 export class UploadFileComponent {
   
+   initialState: Upload = { state: 'PENDING', progress: 0 }
+  
   currentFile: File | undefined;
   progress = 0;
   message = '';
 
-  fileName = 'Selecione um arquivo';
+  fileName = LABEL_SELECIONAR_ARQUIVO;
   fileInfos: File[] = [];
 
 
@@ -32,15 +35,14 @@ export class UploadFileComponent {
     this.currentFile = file;
     this.fileName = this.currentFile.name;
   } else {
-    this.fileName = 'Selecione um arquivo';
+    this.fileName = LABEL_SELECIONAR_ARQUIVO;
   }
 }
  
  
   upload(): void {
-    this.progress = 0;
-    this.message = "";
-
+    this.progress = 1;
+    
     if (this.currentFile) {
       this.uploadService.upload(this.currentFile).subscribe(
         (event: any) => {
@@ -48,7 +50,9 @@ export class UploadFileComponent {
             this.progress = Math.round(100 * event.loaded / event.total);
           } else if (event instanceof HttpResponse) {
             this.message = event.body.message;
-           // this.fileInfos.push(this.currentFile);
+            this.currentFile = undefined;
+            this.fileName = LABEL_SELECIONAR_ARQUIVO;
+            
           }
         },
         (err: any) => {
@@ -65,6 +69,8 @@ export class UploadFileComponent {
         });
     }
 
+
+  
   }
 
 

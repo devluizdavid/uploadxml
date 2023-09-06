@@ -17,6 +17,7 @@ public class AgenteDto {
     @JsonProperty("data")
     @JsonSerialize(using = DateJsonSerializer.class)
     private Date data;
+
     @JsonProperty("regiao")
     private List<RegiaoDto> regiao;
 

@@ -5,8 +5,6 @@ import lombok.Data;
 
 import java.util.List;
 
-
-
 @Data
 public class AgenteRequest {
 
@@ -16,7 +14,7 @@ public class AgenteRequest {
     @JsonProperty("agente")
     private List<AgenteDto> agente;
 
-    public AgenteRequest( @JsonProperty("versao") String versao, @JsonProperty("agente")  List<AgenteDto> agenteDto) {
+    public AgenteRequest(@JsonProperty("versao") String versao, @JsonProperty("agente") List<AgenteDto> agenteDto) {
         this.versao = versao;
         this.agente = agenteDto;
     }

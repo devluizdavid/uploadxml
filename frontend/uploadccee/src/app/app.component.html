@@ -1,8 +1,14 @@
-<div class="container" style="width:600px">
-  <div style="margin: 20px">
-    <h3>ccee.org.br</h3>
-    <h4>{{ title }}</h4>
-  </div>
 
-  <app-upload-file></app-upload-file>
+
+<mat-toolbar class="toolbar">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Upload XML CCEE</span>
+  <span class="example-spacer"></span>
+   
+</mat-toolbar>  
+
+<div class="container">
+  <app-upload-file></app-upload-file> 
 </div>

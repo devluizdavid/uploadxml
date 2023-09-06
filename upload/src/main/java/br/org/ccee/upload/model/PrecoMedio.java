@@ -29,5 +29,4 @@ public class PrecoMedio {
     private Agente agente;
 
 
-
 }

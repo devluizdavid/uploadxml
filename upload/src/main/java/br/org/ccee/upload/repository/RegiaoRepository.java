@@ -3,12 +3,10 @@ package br.org.ccee.upload.repository;
 import br.org.ccee.upload.model.Regiao;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
-public interface RegiaoRepository extends JpaRepository<Regiao, String> {
+public interface RegiaoRepository extends JpaRepository<Regiao, Integer> {
 
 
-    void deleteBySigla(String sigla);
-
-    Optional<Regiao> findBySigla(String sigla);
+    List<Regiao> findBySigla(String sigla);
 }

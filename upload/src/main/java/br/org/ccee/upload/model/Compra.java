@@ -22,12 +22,13 @@ public class Compra {
     @Column
     private BigDecimal valor;
 
-
     @ManyToOne
     private Regiao regiao;
 
     @ManyToOne
     private Agente agente;
+
+
 
 
 }

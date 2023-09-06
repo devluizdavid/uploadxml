@@ -1,41 +1,26 @@
-<div>
-  <mat-toolbar *ngIf="currentFile" class="progress-bar">
-    <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
-    <span class="progress">{{ progress }}%</span>
-  </mat-toolbar>
-
+<div class="parent">
   <mat-form-field>
-    <div>
-      <mat-toolbar>
-        <input matInput [value]="fileName" />
+    <div style="text-align:center;">
 
-       
+      <mat-toolbar *ngIf="currentFile" class="progress-bar">
+        <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+        <span class="progress">{{ progress }}%</span>
       </mat-toolbar>
 
-      
-      <input
-        type="file"
-        id="fileInput"
-        (change)="selectFile($event)"
-        name="fileInput"
-      />
 
+      <mat-toolbar>
+        <input matInput [value]="fileName" />
+      </mat-toolbar>
+      <input type="file" id="fileInput"  accept="text/xml" (change)="selectFile($event)" name="fileInput" />
+
+      <div *ngIf="message" class="message">
+        {{ message }}
+      </div>
     </div>
-   
   </mat-form-field>
-  <div>
-    <button
-    mat-flat-button
-    color="primary"
-    [disabled]="!currentFile"
-    (click)="upload()"
-  >
+
+  
+  <button mat-flat-button color="primary" [disabled]="!currentFile" (click)="upload()">
     Upload
   </button>
-  </div>
 </div>
-
-<div *ngIf="message" class="message">
-  {{ message }}
-</div>
-

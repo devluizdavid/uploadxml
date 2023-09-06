@@ -25,7 +25,7 @@ public class AgenteController {
     private RegiaoService regiaoService;
 
 
-  @PostMapping
+    @PostMapping
     public void uploadFile(@RequestParam("file") MultipartFile file) {
         try {
             byte[] fileBytes = file.getBytes();
@@ -39,9 +39,9 @@ public class AgenteController {
                 Agente agente = agenteService.create(agenteDto);
 
                 agenteDto.getRegiao().stream().forEach(regiaoDto -> {
-                    regiaoService.create(agente , regiaoDto);
+                    regiaoService.create(agente, regiaoDto);
                 });
-            } );
+            });
 
             agenteRequest.getAgente().stream().forEach(agenteDto -> System.out.println(agenteDto.getCodigo()));
 
