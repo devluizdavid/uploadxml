@@ -1,14 +1,15 @@
 # Projeto Spring boot (Back) + Angular (Front)
 
-Esse é um projeto para demonstrar a utilização da integração entre o back spring boot com o Angular +. Abaixo segue as tecnologias utilizadas:
+Esse é um projeto para demonstrar a utilização da integração entre o back spring boot com o Angular +. 
 
-## Front
+
+## Tecnologias utilizadas (Front)
 * Node -> v18.17.1
 * Angular -> v16+
 * Angular Material
 * Typescript
 
-## Back
+## Tecnologias utilizadas (Back)
 * Spring boot (Spring data, Spring security) -> 2.7.15
 * Flyway -> v16+
 * Mysql -> 8
