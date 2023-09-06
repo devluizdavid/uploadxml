@@ -25,25 +25,6 @@ public class AgenteController {
     private RegiaoService regiaoService;
 
 
-/*
-    @GetMapping
-    public ResponseEntity<List<Agente>> findAll() {
-        List<Agente> agentes = agenteService.findAll();
-        if (agentes == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return ResponseEntity.ok(agentes);
-    }
-
-
-    @GetMapping(value = "/{agenteId}")
-    public ResponseEntity<Agente> findById(@PathVariable Integer agenteId) {
-        Optional<Agente> agente = agenteService.findById(agenteId);
-        if (!agente.isPresent())  return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(agente.get());
-    }
-
- */
   @PostMapping
     public void uploadFile(@RequestParam("file") MultipartFile file) {
         try {
@@ -68,37 +49,5 @@ public class AgenteController {
             e.printStackTrace();
         }
     }
-
-/*
-    @PostMapping(consumes = "application/xml", produces = "application/xml; charset=utf-8")
-    public ResponseEntity<List<br.org.ccee.upload.model.Agente>> create(@RequestBody Agentes agentes)  {
-       for (Agente novoAgente: agentes.getAgente()) {
-            br.org.ccee.upload.model.Agente agente = agenteService.create(novoAgente);
-            if (agente == null) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
-        }
-
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
-    }*/
-
-    /*
-    @PutMapping(value = "/{agenteId}")
-    public ResponseEntity<Agente> update(@PathVariable Integer agenteId, @RequestBody AgenteDto agenteDto) {
-        Agente agente = agenteService.update(agenteId, agenteDto);
-        if (agente == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(agente, HttpStatus.OK);
-    }
-
-    @DeleteMapping(value = "/{agenteId}")
-    public ResponseEntity<Boolean> deleteById(@PathVariable Integer agenteId) throws ValidationException {
-        Boolean removido  = agenteService.deleteById(agenteId);
-        if (removido.equals(Boolean.TRUE)) return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
-        else  return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.NOT_FOUND);
-    }
-
-     */
 
 }

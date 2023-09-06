@@ -15,23 +15,15 @@ const HTTP_OPTIONS = {
   providedIn: 'root'
 })
 export class UploadService {
-
   
-
-
   constructor(private http: HttpClient) { }
 
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
-
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${baseUrl}/agente`, formData, HTTP_OPTIONS);
-
-    return this.http.request(req);
+   return this.http.post<any>(`${baseUrl}/agente`, formData);
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get(`${baseUrl}/agente`);
-  }
+  
 }

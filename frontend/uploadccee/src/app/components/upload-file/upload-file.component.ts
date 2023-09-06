@@ -11,49 +11,61 @@ import { UploadedFile } from 'src/app/models/UploadedFile'; // Importe o modelo 
 })
 export class UploadFileComponent {
   
-  selectedFiles: FileList  = new DataTransfer().files;
-  progressInfos: UploadedFile[] = [];
-  
+  currentFile: File | undefined;
+  progress = 0;
   message = '';
 
-  fileInfos: Observable<any> | undefined;
+  fileName = 'Selecione um arquivo';
+  fileInfos: File[] = [];
+
 
   constructor(private uploadService: UploadService) { 
-
   }
 
   ngOnInit() {
-    this.fileInfos = this.uploadService.getFiles();
-  }
-
-  selectFiles(event: any) {
-    this.progressInfos = [];
-    this.selectedFiles = event.target.files;
-  }
    
-  uploadFiles() {
-    this.message = '';
-  
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.upload(i, this.selectedFiles[i]);
-    }
   }
 
-  upload(idx: any, file: File) {
-     this.progressInfos[idx] = { value: 0, fileName: file.name };
-  
-    this.uploadService.upload(file).subscribe(
-      event => {
-        if (event.type === HttpEventType.UploadProgress) {
-        //  this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          this.fileInfos = this.uploadService.getFiles();
-        }
-      },
-      err => {
-        this.progressInfos[idx].value = 0;
-        this.message = 'Could not upload the file:' + file.name;
-      });  
+  selectFile(event: any): void {
+  if (event.target.files && event.target.files[0]) {
+    const file: File = event.target.files[0];
+    this.currentFile = file;
+    this.fileName = this.currentFile.name;
+  } else {
+    this.fileName = 'Selecione um arquivo';
   }
+}
+ 
+ 
+  upload(): void {
+    this.progress = 0;
+    this.message = "";
+
+    if (this.currentFile) {
+      this.uploadService.upload(this.currentFile).subscribe(
+        (event: any) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round(100 * event.loaded / event.total);
+          } else if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+           // this.fileInfos.push(this.currentFile);
+          }
+        },
+        (err: any) => {
+          console.log(err);
+          this.progress = 0;
+
+          if (err.error && err.error.message) {
+            this.message = err.error.message;
+          } else {
+            this.message = 'Could not upload the file!';
+          }
+
+          this.currentFile = undefined;
+        });
+    }
+
+  }
+
 
 }
